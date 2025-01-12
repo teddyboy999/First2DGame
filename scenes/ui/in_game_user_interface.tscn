@@ -1,0 +1,90 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvm22q3kxulsb"]
+
+[ext_resource type="Script" path="res://scenes/ui/popup_menu_manager.gd" id="1_oe6yf"]
+[ext_resource type="Texture2D" uid="uid://e2t45mrss2qt" path="res://sprites/tilesets/basicTilesMergedTileSet1.png" id="1_vsf1v"]
+[ext_resource type="FontFile" uid="uid://iyko7vrordi8" path="res://assets/fonts/toybox_font/ToyBox.ttf" id="2_qwgpn"]
+
+[node name="InGameUserInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oe6yf")
+
+[node name="PopUpMenu" type="VBoxContainer" parent="Menu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 20
+
+[node name="BaseMenuScreen" type="MarginContainer" parent="Menu/PopUpMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Menu/PopUpMenu/BaseMenuScreen"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+texture = ExtResource("1_vsf1v")
+region_rect = Rect2(144, 32, 16, 16)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/PopUpMenu/BaseMenuScreen/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/PopUpMenu/BaseMenuScreen/NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="HelpButton" type="Button" parent="Menu/PopUpMenu/BaseMenuScreen/NinePatchRect/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_qwgpn")
+theme_override_font_sizes/font_size = 20
+text = "Controls"
+
+[node name="SettingsButton" type="Button" parent="Menu/PopUpMenu/BaseMenuScreen/NinePatchRect/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_qwgpn")
+theme_override_font_sizes/font_size = 20
+text = "Settings
+"
+
+[node name="BottomSeparator" type="Control" parent="Menu/PopUpMenu"]
+layout_mode = 2
+
+[node name="ControlsMenuContainer" type="MarginContainer" parent="Menu/PopUpMenu"]
+layout_mode = 2

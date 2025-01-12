@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxpleeb32bbp2"]
+
+[ext_resource type="Script" path="res://scenes/inventory/inventory.gd" id="1_invg1"]
+
+[node name="Inventory" type="Node2D"]
+scale = Vector2(1.46384, 1.46384)
+script = ExtResource("1_invg1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 34.0
+offset_bottom = 31.0
+scale = Vector2(2.59978, 3.1941)
+color = Color(0, 0, 0, 0.392157)
+
+[node name="pistolAmmoLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 40.0
+offset_right = 80.0
+offset_bottom = 23.0
+
+[node name="shotgunAmmoLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 40.0
+offset_top = 24.0
+offset_right = 80.0
+offset_bottom = 47.0
+
+[node name="rifleAmmoLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 40.0
+offset_top = 48.0
+offset_right = 80.0
+offset_bottom = 71.0
+
+[node name="grenadeAmmoLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 40.0
+offset_top = 72.0
+offset_right = 80.0
+offset_bottom = 95.0

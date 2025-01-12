@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Tutorial" load_steps=2 format=3 uid="uid://blda5lot6n2b5"]
+
+[ext_resource type="Script" path="res://Resources/tutorials/tutorial.gd" id="1_gw1jl"]
+
+[resource]
+script = ExtResource("1_gw1jl")
+title = "Look Ahead"
+description = "Hold down 'shift' and move the mouse around the edges of your screen to look further ahead."

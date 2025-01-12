@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://v06hclmim1wr"]
+
+[ext_resource type="Texture2D" uid="uid://weaggmn2hd80" path="res://sprites/environment/particles/bloodParticle.png" id="1_2nj30"]
+[ext_resource type="Script" path="res://scenes/environment/particles/explosion_particles.gd" id="1_b1c37"]
+
+[sub_resource type="Curve" id="Curve_gsxa3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.997207, 0.638717), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="ExplosionParticles" type="Node2D"]
+script = ExtResource("1_b1c37")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+texture = ExtResource("1_2nj30")
+direction = Vector2(1, 2.08165e-12)
+spread = 180.0
+gravity = Vector2(2.08165e-12, 2.08165e-12)
+initial_velocity_min = 50.0
+initial_velocity_max = 300.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_gsxa3")
+
+[connection signal="finished" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_finished"]

@@ -1,0 +1,448 @@
+[gd_scene load_steps=19 format=3 uid="uid://bcmcebsjtui65"]
+
+[ext_resource type="StyleBox" uid="uid://buocle8bokfss" path="res://assets/themes/hover_button.tres" id="1_gifof"]
+[ext_resource type="StyleBox" uid="uid://d31o2sfqy3d11" path="res://assets/themes/normal_button.tres" id="2_ocloo"]
+[ext_resource type="Texture2D" uid="uid://e2t45mrss2qt" path="res://sprites/tilesets/basicTilesMergedTileSet1.png" id="3_ea6f1"]
+[ext_resource type="Script" path="res://scenes/ui/game_ui.gd" id="3_nmjug"]
+[ext_resource type="PackedScene" uid="uid://due6ac3iib71x" path="res://scenes/ui/tutorial_slot.tscn" id="4_jnsaj"]
+[ext_resource type="Resource" uid="uid://bnmaalkejgfme" path="res://Resources/tutorials/movement_tutorial.tres" id="6_1bp6r"]
+[ext_resource type="Resource" uid="uid://dy1msv370ruqp" path="res://Resources/tutorials/shooting_tutorial.tres" id="7_68m2f"]
+[ext_resource type="Resource" uid="uid://blda5lot6n2b5" path="res://Resources/tutorials/look_ahead_tutorial.tres" id="7_r725t"]
+[ext_resource type="Resource" uid="uid://dl025dtp4em55" path="res://Resources/tutorials/items_tutorial.tres" id="9_mq2kq"]
+[ext_resource type="PackedScene" uid="uid://svtv87legpb3" path="res://scenes/gameplay/gameplay_manager.tscn" id="10_dbe0o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4kvpj"]
+
+[sub_resource type="Theme" id="Theme_g5btd"]
+Button/styles/focus = SubResource("StyleBoxEmpty_4kvpj")
+Button/styles/hover = ExtResource("1_gifof")
+Button/styles/normal = ExtResource("2_ocloo")
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.627451)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.627451)
+
+[sub_resource type="Animation" id="Animation_rdr2o"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pauseMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(2),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2.08165e-12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pauseMenu:anchors_preset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pauseMenu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("tutorialMenu:anchors_preset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.5),
+"update": 1,
+"values": [15]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("tutorialMenu:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1154, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("tutorialMenu:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ukb3c"]
+resource_name = "hide_pause_menu"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pauseMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1153, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pauseMenu:anchors_preset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [15, 15]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pauseMenu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_yojlw"]
+resource_name = "hide_tutorials"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tutorialMenu:anchors_preset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 1,
+"values": [15, 15]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tutorialMenu:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1154, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("tutorialMenu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_y7x3w"]
+resource_name = "show_pause_menu"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pauseMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(-1153, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pauseMenu:anchors_preset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [15, 15]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pauseMenu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="Animation" id="Animation_fvje5"]
+resource_name = "show_tutorials"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tutorialMenu:anchors_preset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 1,
+"values": [15, 15]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tutorialMenu:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1154, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("tutorialMenu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tijwv"]
+_data = {
+"RESET": SubResource("Animation_rdr2o"),
+"hide_pause_menu": SubResource("Animation_ukb3c"),
+"hide_tutorials": SubResource("Animation_yojlw"),
+"show_pause_menu": SubResource("Animation_y7x3w"),
+"show_tutorials": SubResource("Animation_fvje5")
+}
+
+[node name="GameUI" type="Control" node_paths=PackedStringArray("PAUSE_MENU", "TUTORIAL_MENU", "TUTORIAL_DESCRIPTION", "ANIMATION_PLAYER")]
+top_level = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_g5btd")
+script = ExtResource("3_nmjug")
+PAUSE_MENU = NodePath("pauseMenu")
+TUTORIAL_MENU = NodePath("tutorialMenu")
+TUTORIAL_DESCRIPTION = NodePath("tutorialMenu/Tutorial/InnerMargin/HBoxContainer/TutorialDescription")
+ANIMATION_PLAYER = NodePath("UIAnimationPlayer")
+
+[node name="pauseMenu" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 120.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="pauseMenu"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_ea6f1")
+region_rect = Rect2(144, 32, 16, 16)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="VerticalTable" type="VBoxContainer" parent="pauseMenu/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 7
+
+[node name="TutorialButton" type="Button" parent="pauseMenu/NinePatchRect/VerticalTable"]
+custom_minimum_size = Vector2(75, 20)
+layout_mode = 2
+text = "Help"
+
+[node name="SettingsButton" type="Button" parent="pauseMenu/NinePatchRect/VerticalTable"]
+custom_minimum_size = Vector2(90, 20)
+layout_mode = 2
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="pauseMenu/NinePatchRect/VerticalTable"]
+custom_minimum_size = Vector2(75, 20)
+layout_mode = 2
+text = "Quit"
+
+[node name="tutorialMenu" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1154.0
+offset_right = 1504.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Tutorial" type="NinePatchRect" parent="tutorialMenu"]
+custom_minimum_size = Vector2(350, 240)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_ea6f1")
+region_rect = Rect2(96, 32, 48, 16)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="InnerMargin" type="MarginContainer" parent="tutorialMenu/Tutorial"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -106.0
+offset_right = 337.0
+offset_bottom = 106.0
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="tutorialMenu/Tutorial/InnerMargin"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="tutorialMenu/Tutorial/InnerMargin/HBoxContainer"]
+layout_mode = 2
+
+[node name="TutorialSlot" parent="tutorialMenu/Tutorial/InnerMargin/HBoxContainer/VBoxContainer" instance=ExtResource("4_jnsaj")]
+layout_mode = 2
+TUTORIAL = ExtResource("6_1bp6r")
+
+[node name="TutorialSlot2" parent="tutorialMenu/Tutorial/InnerMargin/HBoxContainer/VBoxContainer" instance=ExtResource("4_jnsaj")]
+layout_mode = 2
+TUTORIAL = ExtResource("7_68m2f")
+
+[node name="TutorialSlot3" parent="tutorialMenu/Tutorial/InnerMargin/HBoxContainer/VBoxContainer" instance=ExtResource("4_jnsaj")]
+layout_mode = 2
+TUTORIAL = ExtResource("7_r725t")
+
+[node name="TutorialSlot4" parent="tutorialMenu/Tutorial/InnerMargin/HBoxContainer/VBoxContainer" instance=ExtResource("4_jnsaj")]
+layout_mode = 2
+TUTORIAL = ExtResource("9_mq2kq")
+
+[node name="TutorialDescription" type="NinePatchRect" parent="tutorialMenu/Tutorial/InnerMargin/HBoxContainer"]
+custom_minimum_size = Vector2(170, 200)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("3_ea6f1")
+region_rect = Rect2(144, 32, 16, 16)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="tutorialMenu/Tutorial/InnerMargin/HBoxContainer/TutorialDescription"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -94.5
+offset_right = 75.0
+offset_bottom = 94.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TutorialImage" type="TextureRect" parent="tutorialMenu/Tutorial/InnerMargin/HBoxContainer/TutorialDescription/VBoxContainer"]
+custom_minimum_size = Vector2(150, 110)
+layout_mode = 2
+size_flags_horizontal = 4
+stretch_mode = 5
+
+[node name="TutorialDescription" type="RichTextLabel" parent="tutorialMenu/Tutorial/InnerMargin/HBoxContainer/TutorialDescription/VBoxContainer"]
+custom_minimum_size = Vector2(150, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="UIAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tijwv")
+}
+
+[node name="GameplayManager" parent="." instance=ExtResource("10_dbe0o")]
+
+[connection signal="pressed" from="pauseMenu/NinePatchRect/VerticalTable/TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="pauseMenu/NinePatchRect/VerticalTable/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="pauseMenu/NinePatchRect/VerticalTable/QuitButton" to="." method="_on_quit_button_pressed"]

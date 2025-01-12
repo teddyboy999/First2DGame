@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://efyp07mekyj0"]
+
+[ext_resource type="Script" path="res://scenes/weapons/pistol/pistol_test.gd" id="1_qcjo5"]
+[ext_resource type="Texture2D" uid="uid://cpv0didm2idlb" path="res://sprites/weapons/pistolTest.png" id="1_vt8o0"]
+[ext_resource type="PackedScene" uid="uid://dyvsg6agovpti" path="res://scenes/environment/particles/gun_shot_particle.tscn" id="3_x4oeu"]
+[ext_resource type="AudioStream" uid="uid://cnrdpejmgaavt" path="res://assets/sounds/guns/8014__xenonn__layered-gunshots/128293__xenonn__layered-gunshot-3.wav" id="4_erwsi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5td2h"]
+radius = 22.0
+
+[node name="pistolTest" type="Area2D" groups=["weapon"]]
+scale = Vector2(7.87643, 7.87643)
+collision_layer = 0
+script = ExtResource("1_qcjo5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5td2h")
+
+[node name="gunPivot" type="Marker2D" parent="."]
+unique_name_in_owner = true
+
+[node name="gunSprite" type="Sprite2D" parent="gunPivot"]
+texture_filter = 1
+position = Vector2(12.8231, 0)
+scale = Vector2(0.739577, 0.739577)
+texture = ExtResource("1_vt8o0")
+
+[node name="shootPoint" type="Marker2D" parent="gunPivot/gunSprite"]
+unique_name_in_owner = true
+position = Vector2(3, 0)
+
+[node name="GunShotParticle" parent="gunPivot/gunSprite/shootPoint" instance=ExtResource("3_x4oeu")]
+position = Vector2(-0.0817014, 0)
+
+[node name="reloadTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.6
+one_shot = true
+
+[node name="magLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -5.2054
+offset_top = 10.2838
+offset_right = 34.7946
+offset_bottom = 33.2838
+scale = Vector2(0.269095, 0.269095)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_erwsi")
+volume_db = -20.0
+
+[connection signal="timeout" from="reloadTimer" to="." method="_on_reload_timer_timeout"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4bquelebw1m5"]
+
+[ext_resource type="Script" path="res://scenes/environment/particles/particles.gd" id="1_7658k"]
+
+[sub_resource type="Curve" id="Curve_qrhbt"]
+_data = [Vector2(0.0893855, 1), 0.0, 0.0, 0, 0, Vector2(0.899441, 0.450356), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="WallHitParticles" type="Node2D"]
+script = ExtResource("1_7658k")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 5
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.4
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+direction = Vector2(2.08165e-12, 1)
+spread = 50.0
+gravity = Vector2(2.08165e-12, 2.08165e-12)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 4.0
+scale_amount_max = 6.0
+scale_amount_curve = SubResource("Curve_qrhbt")
+color = Color(0.994442, 0.945137, 0, 1)

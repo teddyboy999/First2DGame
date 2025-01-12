@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Tutorial" load_steps=2 format=3 uid="uid://dl025dtp4em55"]
+
+[ext_resource type="Script" path="res://Resources/tutorials/tutorial.gd" id="1_th0bu"]
+
+[resource]
+script = ExtResource("1_th0bu")
+title = "Items"
+description = "Pick up items or weapons using 'E' or by right clicking, drop them using 'X'."

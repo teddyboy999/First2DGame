@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx7kgnwalwqy4"]
+
+[ext_resource type="PackedScene" uid="uid://cwivyhuhqxi1p" path="res://scenes/weapons/gun.tscn" id="1_b5sar"]
+[ext_resource type="Script" path="res://scenes/weapons/assaultRifle/assault_rifle.gd" id="2_y70ss"]
+[ext_resource type="Texture2D" uid="uid://bpf0hgawt8yi8" path="res://sprites/weapons/assault_rifle_top.png" id="3_gf3p7"]
+[ext_resource type="PackedScene" uid="uid://dyvsg6agovpti" path="res://scenes/environment/particles/gun_shot_particle.tscn" id="4_ms74b"]
+[ext_resource type="AudioStream" uid="uid://dt4n5r31jxkkv" path="res://assets/sounds/guns/8014__xenonn__layered-gunshots/128297__xenonn__layered-gunshot-7.wav" id="5_obrgt"]
+
+[node name="assaultRifle" instance=ExtResource("1_b5sar")]
+script = ExtResource("2_y70ss")
+FIRE_RATE = 0.2
+CAN_SHOOT = true
+SCREEN_SHAKE_VALUE = 1.0
+CURRENT_FIRING_MODE = 2
+
+[node name="gunSprite" parent="gunPivot" index="0"]
+position = Vector2(10.5378, 0)
+scale = Vector2(0.545532, 0.545532)
+texture = ExtResource("3_gf3p7")
+
+[node name="shootPoint" parent="gunPivot/gunSprite" index="0"]
+position = Vector2(13.4728, -0.465458)
+
+[node name="GunShotParticle" parent="gunPivot/gunSprite" index="1" instance=ExtResource("4_ms74b")]
+unique_name_in_owner = true
+position = Vector2(13.4982, -0.232729)
+scale = Vector2(1.83307, 1.83307)
+
+[node name="firingModeLabel" type="Label" parent="." index="4"]
+unique_name_in_owner = true
+offset_left = -5.2054
+offset_top = 17.2667
+offset_right = 34.7946
+offset_bottom = 40.2667
+scale = Vector2(0.269095, 0.269095)
+
+[node name="Timers" type="Node2D" parent="." index="5"]
+
+[node name="shootTimer" type="Timer" parent="Timers" index="0"]
+unique_name_in_owner = true
+autostart = true
+
+[node name="firingModeLabelTimer" type="Timer" parent="Timers" index="1"]
+unique_name_in_owner = true
+
+[node name="burstTimer" type="Timer" parent="Timers" index="2"]
+unique_name_in_owner = true
+wait_time = 0.2
+
+[node name="waitTimer" type="Timer" parent="Timers" index="3"]
+unique_name_in_owner = true
+
+[node name="gunShotSoundPlayer" type="AudioStreamPlayer2D" parent="." index="6"]
+stream = ExtResource("5_obrgt")
+volume_db = -20.0
+
+[connection signal="timeout" from="Timers/shootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="Timers/firingModeLabelTimer" to="." method="_on_firing_mode_label_timer_timeout"]
+[connection signal="timeout" from="Timers/burstTimer" to="." method="_on_burst_timer_timeout"]

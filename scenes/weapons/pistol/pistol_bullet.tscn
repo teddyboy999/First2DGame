@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://ba8yxghf8dqy2"]
+
+[ext_resource type="Script" path="res://scenes/weapons/pistol/pistol_bullet.gd" id="1_sllfa"]
+[ext_resource type="Texture2D" uid="uid://bn12u0rja8lp2" path="res://sprites/weapons/9mmBulletSprite.png" id="1_tbeha"]
+[ext_resource type="PackedScene" uid="uid://c4bquelebw1m5" path="res://scenes/environment/particles/wall_hit_particles.tscn" id="3_c6kby"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_88262"]
+
+[node name="pistolBullet" type="Area2D"]
+top_level = true
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_sllfa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-13, 12)
+scale = Vector2(2.06798, 2.09874)
+texture = ExtResource("1_tbeha")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_88262")
+
+[node name="WallHitParticles" parent="." instance=ExtResource("3_c6kby")]
+unique_name_in_owner = true
+rotation = 1.5708
+scale = Vector2(2, 2)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-8.5, 0.500001)
+scale = Vector2(2.15, 1.45)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

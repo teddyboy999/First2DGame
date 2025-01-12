@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Tutorial" load_steps=2 format=3 uid="uid://dy1msv370ruqp"]
+
+[ext_resource type="Script" path="res://Resources/tutorials/tutorial.gd" id="1_owkho"]
+
+[resource]
+script = ExtResource("1_owkho")
+title = "Shooting"
+description = "Look around using the mouse. Left click to shoot. 'R' to reload."

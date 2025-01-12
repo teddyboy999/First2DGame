@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccyeapcp2xmu"]
+
+[ext_resource type="Script" path="res://scenes/inventory/item.gd" id="1_v8ah4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ajhd5"]
+radius = 13.0384
+
+[sub_resource type="Animation" id="Animation_p8qtx"]
+resource_name = "item_glow"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, -1), Vector2(0, -2), Vector2(0, -1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.921569), Color(1, 1, 1, 0.803922), Color(1, 1, 1, 0.921569), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k4fqy"]
+_data = {
+"item_glow": SubResource("Animation_p8qtx")
+}
+
+[node name="item" type="Area2D" groups=["item"]]
+scale = Vector2(4.27747, 4.27747)
+collision_layer = 2049
+script = ExtResource("1_v8ah4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ajhd5")
+
+[node name="itemSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+
+[node name="itemAnimation" type="AnimationPlayer" parent="itemSprite"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_k4fqy")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

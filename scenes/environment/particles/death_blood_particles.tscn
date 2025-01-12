@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkx1ukhv2l7sj"]
+
+[ext_resource type="Texture2D" uid="uid://weaggmn2hd80" path="res://sprites/environment/particles/bloodParticle.png" id="1_rvgd6"]
+[ext_resource type="Script" path="res://scenes/environment/particles/death_blood_particles.gd" id="2_prxvm"]
+
+[sub_resource type="Curve" id="Curve_8g2i3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.910451), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="DeathBloodParticles" type="CPUParticles2D"]
+z_index = -5
+texture_filter = 1
+amount = 40
+lifetime = 0.2
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.5
+texture = ExtResource("1_rvgd6")
+direction = Vector2(-1, 2.08165e-12)
+spread = 60.0
+gravity = Vector2(2.08165e-12, 2.08165e-12)
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
+scale_amount_min = 0.75
+scale_amount_max = 0.75
+scale_amount_curve = SubResource("Curve_8g2i3")
+color = Color(0.85001, 0, 0.239826, 1)
+script = ExtResource("2_prxvm")
+
+[node name="pauseTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="pauseTimer" to="." method="_on_pause_timer_timeout"]

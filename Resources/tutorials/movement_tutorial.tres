@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Tutorial" load_steps=3 format=3 uid="uid://bnmaalkejgfme"]
+
+[ext_resource type="Texture2D" uid="uid://dp4hkss2s610n" path="res://sprites/ui/tutorial/movement_tutorial_icon.png" id="1_ahsrn"]
+[ext_resource type="Script" path="res://Resources/tutorials/tutorial.gd" id="2_av4ry"]
+
+[resource]
+script = ExtResource("2_av4ry")
+title = "Movement"
+icon = ExtResource("1_ahsrn")
+description = "Move Using WASD."

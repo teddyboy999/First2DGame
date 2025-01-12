@@ -1,0 +1,24 @@
+{
+	"201" : {
+		"TEXTURE" : "pistol_item.png",
+		"ITEM_TYPE":2, 
+		"NODE_PATH":"res://scenes/weapons/pistol/pistol_test.tscn",
+	},
+
+	"100" : {
+		"TEXTURE" : "pump_shotgun_item.png",
+		"ITEM_TYPE":1,
+		"NODE_PATH":"res://scenes/weapons/pistol/pistol_test.tscn",
+	},
+
+	"101" : {
+		"TEXTURE" : "assault_rifle_item.png",
+		"ITEM_TYPE":1,
+		"NODE_PATH":"res://scenes/weapons/assaultRifle/assault_rifle.tscn",
+	},
+	"102" : {
+		"TEXTURE" : "submachine_gun_item.png",
+		"ITEM_TYPE":1,
+		"NODE_PATH":"res://scenes/weapons/submachineGun/submachine_gun.tscn",
+	},
+}
